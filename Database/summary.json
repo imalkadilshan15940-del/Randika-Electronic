@@ -1,44 +1,171 @@
 {
-    "generatedAt": "2026-09-20T16:31:28+00:00",
-    "itemCount": 4,
-    "items": [
+    "generatedAt": "2026-09-20T16:36:28+00:00",
+    "inventory": {
+        "itemCount": 4,
+        "lowStockCount": 0,
+        "items": [
+            {
+                "name": "Calculator",
+                "sku": "lm1254",
+                "category": "Other",
+                "unit": "pcs",
+                "inStock": 98,
+                "minQty": 5,
+                "price": 0,
+                "sellPrice": null,
+                "lowStock": false
+            },
+            {
+                "name": "mouse",
+                "sku": "lm1254",
+                "category": "Other",
+                "unit": "pcs",
+                "inStock": 98,
+                "minQty": 5,
+                "price": 0,
+                "sellPrice": null,
+                "lowStock": false
+            },
+            {
+                "name": "pen",
+                "sku": "test10",
+                "category": "Other",
+                "unit": "pcs",
+                "inStock": 78,
+                "minQty": 5,
+                "price": 0,
+                "sellPrice": null,
+                "lowStock": false
+            },
+            {
+                "name": "phone",
+                "sku": "lm1254",
+                "category": "Other",
+                "unit": "pcs",
+                "inStock": 99,
+                "minQty": 5,
+                "price": 0,
+                "sellPrice": null,
+                "lowStock": false
+            }
+        ]
+    },
+    "salesHistory": [
         {
-            "name": "Calculator",
-            "sku": "lm1254",
-            "category": "Other",
-            "unit": "pcs",
-            "inStock": 98,
-            "minQty": 5,
-            "lowStock": false
+            "receiptNo": "INV-1004",
+            "ts": 1785142762429,
+            "customerName": "Walk-in Customer",
+            "customerPhone": "",
+            "payMethod": "Cash",
+            "note": "",
+            "items": [
+                {
+                    "name": "Bulb",
+                    "sku": "B001",
+                    "unit": "pcs",
+                    "price": 200,
+                    "qty": 1
+                }
+            ],
+            "subtotal": 200,
+            "discAmt": 0,
+            "discType": "pct",
+            "discVal": 0,
+            "total": 200,
+            "profit": 200
         },
         {
-            "name": "mouse",
-            "sku": "lm1254",
-            "category": "Other",
-            "unit": "pcs",
-            "inStock": 98,
-            "minQty": 5,
-            "lowStock": false
+            "receiptNo": "INV-1003",
+            "ts": 1784908310338,
+            "customerName": "Walk-in Customer",
+            "customerPhone": "",
+            "payMethod": "Cash",
+            "note": "",
+            "items": [
+                {
+                    "name": "Bulb",
+                    "sku": "B001",
+                    "unit": "pcs",
+                    "price": 200,
+                    "qty": 1
+                },
+                {
+                    "name": "Calculator",
+                    "sku": "lm1254",
+                    "unit": "pcs",
+                    "price": 0,
+                    "qty": 1
+                },
+                {
+                    "name": "mouse",
+                    "sku": "lm1254",
+                    "unit": "pcs",
+                    "price": 0,
+                    "qty": 1
+                }
+            ],
+            "subtotal": 200,
+            "discAmt": 0,
+            "discType": "pct",
+            "discVal": 0,
+            "total": 200,
+            "profit": 200
         },
         {
-            "name": "pen",
-            "sku": "test10",
-            "category": "Other",
-            "unit": "pcs",
-            "inStock": 78,
-            "minQty": 5,
-            "lowStock": false
+            "receiptNo": "INV-1002",
+            "ts": 1784634227049,
+            "customerName": "Walk-in Customer",
+            "customerPhone": "",
+            "payMethod": "Cash",
+            "note": "",
+            "items": [
+                {
+                    "name": "pen",
+                    "sku": "test10",
+                    "unit": "pcs",
+                    "price": 0,
+                    "qty": 1
+                }
+            ],
+            "subtotal": 0,
+            "discAmt": 0,
+            "discType": "pct",
+            "discVal": 0,
+            "total": 0,
+            "profit": 0
         },
         {
-            "name": "phone",
-            "sku": "lm1254",
-            "category": "Other",
-            "unit": "pcs",
-            "inStock": 99,
-            "minQty": 5,
-            "lowStock": false
+            "receiptNo": "INV-1001",
+            "ts": 1784633709551,
+            "customerName": "Walk-in Customer",
+            "customerPhone": "",
+            "payMethod": "Cash",
+            "note": "",
+            "items": [
+                {
+                    "name": "Bulb",
+                    "sku": "B001",
+                    "unit": "pcs",
+                    "price": 200,
+                    "qty": 1
+                }
+            ],
+            "subtotal": 200,
+            "discAmt": 0,
+            "discType": "pct",
+            "discVal": 0,
+            "total": 200,
+            "profit": 200
         }
     ],
-    "lowStockCount": 0,
-    "salesLast30Days": []
+    "expenses": [],
+    "profitLoss": [
+        {
+            "month": "2026-07",
+            "revenue": 600,
+            "grossProfit": 600,
+            "expenses": 0,
+            "netProfit": 600
+        }
+    ]
 }
