@@ -1,9 +1,18 @@
 {
-    "generatedAt": "2026-09-20T16:06:43+00:00",
+    "generatedAt": "2026-09-20T16:08:05+00:00",
     "itemCount": 4,
     "items": [
         {
             "name": "Calculator",
+            "sku": "lm1254",
+            "category": "Other",
+            "unit": "pcs",
+            "inStock": 98,
+            "minQty": 5,
+            "lowStock": false
+        },
+        {
+            "name": "mouse",
             "sku": "lm1254",
             "category": "Other",
             "unit": "pcs",
@@ -17,15 +26,6 @@
             "category": "Other",
             "unit": "pcs",
             "inStock": 78,
-            "minQty": 5,
-            "lowStock": false
-        },
-        {
-            "name": "mouse",
-            "sku": "lm1254",
-            "category": "Other",
-            "unit": "pcs",
-            "inStock": 98,
             "minQty": 5,
             "lowStock": false
         },
