@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Dashboard</title>
+<style>
+  :root{--bg:#f5f4f0;--surface:#fff;--border:#e2e0d8;--text:#1a1916;--text2:#6b6960;--text3:#9a9890;--accent:#d4501a;--red:#c02828;--red-bg:#fdeaea;--green:#1a7a3c}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text)}
+  .wrap{max-width:920px;margin:0 auto;padding:24px 16px 60px}
+  header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .logo{width:40px;height:40px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
+  h1{font-size:20px;margin:0}
+  .sub{font-size:12px;color:var(--text3);margin:2px 0 0}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px}
+  .card .n{font-size:24px;font-weight:700}
+  .card .l{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.03em}
+  .section{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px}
+  .section h2{font-size:14px;margin:0 0 12px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--border)}
+  th{color:var(--text2);font-weight:600;font-size:11px;text-transform:uppercase}
+  tr.low td{background:var(--red-bg);color:var(--red)}
+  .badge{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10.5px;font-weight:600}
+  .badge.low{background:var(--red-bg);color:var(--red)}
+  .badge.ok{background:#e9f7ee;color:var(--green)}
+  .empty{color:var(--text3);font-size:13px;padding:10px 0}
+  .err{background:var(--red-bg);color:var(--red);border-radius:10px;padding:14px;font-size:13px}
+  #search{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;margin-bottom:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">⚡</div>
+    <div>
+      <h1>Stock Dashboard</h1>
+      <div class="sub" id="genAt">Loading…</div>
+    </div>
+  </header>
+
+  <div id="content"></div>
+</div>
+
+<script>
+async function load(){
+  const el = document.getElementById('content');
+  try{
+    const r = await fetch('Database/summary.json?_=' + Date.now(), {cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    const d = await r.json();
+    render(d);
+  }catch(e){
+    el.innerHTML = '<div class="err">Could not load summary.json — ' + (e.message||e) + '<br>Make sure the backend has synced at least once (Settings → GitHub dashboard sync → Sync now).</div>';
+    document.getElementById('genAt').textContent = '';
+  }
+}
+
+function render(d){
+  document.getElementById('genAt').textContent = 'Last updated: ' + new Date(d.generatedAt).toLocaleString();
+
+  const totalStock = (d.items||[]).reduce((s,i)=>s+(i.inStock||0),0);
+  const revenue30 = (d.salesLast30Days||[]).reduce((s,r)=>s+(Number(r.revenue)||0),0);
+  const sales30 = (d.salesLast30Days||[]).reduce((s,r)=>s+(Number(r.count)||0),0);
+
+  const cards = `
+    <div class="cards">
+      <div class="card"><div class="n">${d.itemCount||0}</div><div class="l">Items tracked</div></div>
+      <div class="card"><div class="n" style="color:${d.lowStockCount?'var(--red)':'var(--text)'}">${d.lowStockCount||0}</div><div class="l">Low stock</div></div>
+      <div class="card"><div class="n">${totalStock}</div><div class="l">Total units in stock</div></div>
+      <div class="card"><div class="n">${sales30}</div><div class="l">Sales (30 days)</div></div>
+      <div class="card"><div class="n">${revenue30.toLocaleString(undefined,{maximumFractionDigits:0})}</div><div class="l">Revenue (30 days)</div></div>
+    </div>`;
+
+  const items = d.items || [];
+  const itemRows = items.map(i => `
+    <tr class="${i.lowStock?'low':''}">
+      <td>${esc(i.name)}${i.sku?'<br><span style="font-size:10.5px;color:var(--text3)">'+esc(i.sku)+'</span>':''}</td>
+      <td>${esc(i.category||'')}</td>
+      <td>${i.inStock} ${esc(i.unit||'')}</td>
+      <td>${i.minQty}</td>
+      <td>${i.lowStock ? '<span class="badge low">Low</span>' : '<span class="badge ok">OK</span>'}</td>
+    </tr>`).join('');
+
+  const itemsSection = `
+    <div class="section">
+      <h2>Inventory</h2>
+      <input id="search" type="text" placeholder="Search items…" oninput="filterItems(this.value)">
+      <table id="itemsTable">
+        <thead><tr><th>Item</th><th>Category</th><th>In stock</th><th>Min qty</th><th>Status</th></tr></thead>
+        <tbody>${itemRows || '<tr><td colspan="5" class="empty">No items yet</td></tr>'}</tbody>
+      </table>
+    </div>`;
+
+  const sales = d.salesLast30Days || [];
+  const saleRows = sales.map(s => `
+    <tr><td>${esc(s.day)}</td><td>${s.count}</td><td>${Number(s.revenue||0).toLocaleString(undefined,{maximumFractionDigits:2})}</td></tr>`).join('');
+
+  const salesSection = `
+    <div class="section">
+      <h2>Sales — last 30 days</h2>
+      <table>
+        <thead><tr><th>Date</th><th>Sales</th><th>Revenue</th></tr></thead>
+        <tbody>${saleRows || '<tr><td colspan="3" class="empty">No sales in this period</td></tr>'}</tbody>
+      </table>
+    </div>`;
+
+  document.getElementById('content').innerHTML = cards + itemsSection + salesSection;
+}
+
+function filterItems(q){
+  q = q.trim().toLowerCase();
+  document.querySelectorAll('#itemsTable tbody tr').forEach(tr=>{
+    tr.style.display = tr.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+
+function esc(s){
+  return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+load();
+</script>
+</body>
+</html>
