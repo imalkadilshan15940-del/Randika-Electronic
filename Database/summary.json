@@ -1,7 +1,44 @@
 {
-    "generatedAt": "2026-09-20T15:31:53+00:00",
-    "itemCount": 0,
-    "items": [],
+    "generatedAt": "2026-09-20T15:35:52+00:00",
+    "itemCount": 4,
+    "items": [
+        {
+            "name": "Calculator",
+            "sku": "lm1254",
+            "category": "Other",
+            "unit": "pcs",
+            "inStock": 98,
+            "minQty": 5,
+            "lowStock": false
+        },
+        {
+            "name": "pen",
+            "sku": "test10",
+            "category": "Other",
+            "unit": "pcs",
+            "inStock": 78,
+            "minQty": 5,
+            "lowStock": false
+        },
+        {
+            "name": "mouse",
+            "sku": "lm1254",
+            "category": "Other",
+            "unit": "pcs",
+            "inStock": 98,
+            "minQty": 5,
+            "lowStock": false
+        },
+        {
+            "name": "phone",
+            "sku": "lm1254",
+            "category": "Other",
+            "unit": "pcs",
+            "inStock": 99,
+            "minQty": 5,
+            "lowStock": false
+        }
+    ],
     "lowStockCount": 0,
     "salesLast30Days": []
 }
