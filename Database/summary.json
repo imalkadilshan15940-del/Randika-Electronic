@@ -1,201 +1,55 @@
 {
-    "generatedAt": "2026-09-20T17:01:58+00:00",
+    "generatedAt": "2026-09-21T17:04:43+00:00",
     "inventory": {
-        "itemCount": 4,
+        "itemCount": 1,
         "lowStockCount": 0,
         "items": [
             {
-                "name": "Calculator",
-                "sku": "lm1254",
+                "name": "Grill",
+                "sku": "",
                 "category": "Other",
                 "unit": "pcs",
-                "inStock": 97,
+                "inStock": 9,
                 "minQty": 5,
-                "price": 500,
-                "sellPrice": 600,
-                "lowStock": false
-            },
-            {
-                "name": "mouse",
-                "sku": "lm1254",
-                "category": "Other",
-                "unit": "pcs",
-                "inStock": 98,
-                "minQty": 5,
-                "price": 400,
-                "sellPrice": 700,
-                "lowStock": false
-            },
-            {
-                "name": "pen",
-                "sku": "test10",
-                "category": "Other",
-                "unit": "pcs",
-                "inStock": 78,
-                "minQty": 5,
-                "price": 200,
-                "sellPrice": 250,
-                "lowStock": false
-            },
-            {
-                "name": "phone",
-                "sku": "lm1254",
-                "category": "Other",
-                "unit": "pcs",
-                "inStock": 99,
-                "minQty": 5,
-                "price": 400,
-                "sellPrice": 450,
+                "price": 11000,
+                "sellPrice": 12000,
                 "lowStock": false
             }
         ]
     },
     "salesHistory": [
         {
-            "receiptNo": "INV-1005",
-            "ts": 1789922880689,
-            "customerName": "Walk-in Customer",
-            "customerPhone": "",
-            "payMethod": "Cash",
-            "note": "",
-            "items": [
-                {
-                    "name": "Calculator",
-                    "sku": "lm1254",
-                    "unit": "pcs",
-                    "price": 600,
-                    "qty": 1
-                }
-            ],
-            "subtotal": 600,
-            "discAmt": 0,
-            "discType": "pct",
-            "discVal": 0,
-            "total": 600,
-            "profit": 100
-        },
-        {
-            "receiptNo": "INV-1004",
-            "ts": 1785142762429,
-            "customerName": "Walk-in Customer",
-            "customerPhone": "",
-            "payMethod": "Cash",
-            "note": "",
-            "items": [
-                {
-                    "name": "Bulb",
-                    "sku": "B001",
-                    "unit": "pcs",
-                    "price": 200,
-                    "qty": 1
-                }
-            ],
-            "subtotal": 200,
-            "discAmt": 0,
-            "discType": "pct",
-            "discVal": 0,
-            "total": 200,
-            "profit": 200
-        },
-        {
-            "receiptNo": "INV-1003",
-            "ts": 1784908310338,
-            "customerName": "Walk-in Customer",
-            "customerPhone": "",
-            "payMethod": "Cash",
-            "note": "",
-            "items": [
-                {
-                    "name": "Bulb",
-                    "sku": "B001",
-                    "unit": "pcs",
-                    "price": 200,
-                    "qty": 1
-                },
-                {
-                    "name": "Calculator",
-                    "sku": "lm1254",
-                    "unit": "pcs",
-                    "price": 0,
-                    "qty": 1
-                },
-                {
-                    "name": "mouse",
-                    "sku": "lm1254",
-                    "unit": "pcs",
-                    "price": 0,
-                    "qty": 1
-                }
-            ],
-            "subtotal": 200,
-            "discAmt": 0,
-            "discType": "pct",
-            "discVal": 0,
-            "total": 200,
-            "profit": 200
-        },
-        {
-            "receiptNo": "INV-1002",
-            "ts": 1784634227049,
-            "customerName": "Walk-in Customer",
-            "customerPhone": "",
-            "payMethod": "Cash",
-            "note": "",
-            "items": [
-                {
-                    "name": "pen",
-                    "sku": "test10",
-                    "unit": "pcs",
-                    "price": 0,
-                    "qty": 1
-                }
-            ],
-            "subtotal": 0,
-            "discAmt": 0,
-            "discType": "pct",
-            "discVal": 0,
-            "total": 0,
-            "profit": 0
-        },
-        {
             "receiptNo": "INV-1001",
-            "ts": 1784633709551,
+            "ts": 1790010223257,
             "customerName": "Walk-in Customer",
             "customerPhone": "",
             "payMethod": "Cash",
             "note": "",
             "items": [
                 {
-                    "name": "Bulb",
-                    "sku": "B001",
+                    "name": "Grill",
+                    "sku": "",
                     "unit": "pcs",
-                    "price": 200,
+                    "price": 12000,
                     "qty": 1
                 }
             ],
-            "subtotal": 200,
+            "subtotal": 12000,
             "discAmt": 0,
             "discType": "pct",
             "discVal": 0,
-            "total": 200,
-            "profit": 200
+            "total": 12000,
+            "profit": 1000
         }
     ],
     "expenses": [],
     "profitLoss": [
         {
             "month": "2026-09",
-            "revenue": 600,
-            "grossProfit": 100,
+            "revenue": 12000,
+            "grossProfit": 1000,
             "expenses": 0,
-            "netProfit": 100
-        },
-        {
-            "month": "2026-07",
-            "revenue": 600,
-            "grossProfit": 600,
-            "expenses": 0,
-            "netProfit": 600
+            "netProfit": 1000
         }
     ]
 }
